@@ -4,6 +4,9 @@ Welcome to my personal portfolio site! 🎓🚀
 
 This website was created as a hands-on project to help me dive into HTML and front-end web development while building a space to showcase who I am, my journey, and what I’ve been working on.
 
+You can view the site here:  
+🔗 [alex-montesinos.github.io/portfolio](https://alex-montesinos.github.io/portfolio/)
+
 ## 🛠 Features
 
 - Responsive design for mobile and desktop
