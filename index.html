@@ -3,39 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alexander Montesinos</title>
+    <meta name="description" content="Portfolio of Alexander Montesinos - Computer Engineering Student at University of Michigan-Dearborn">
+    <title>Alexander Montesinos | Portfolio</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
     <style>
+      /* --- CSS Variables & Reset --- */
       :root {
         --bg-color: #0d1117;
+        --card-bg: #161b22;
         --text-color: #c9d1d9;
         --accent-color: #58a6ff;
+        --secondary-accent: #238636; /* GitHub Green */
         --muted-color: #8b949e;
+        --border-color: #30363d;
+        --nav-blur: rgba(13, 17, 23, 0.85);
+        --shadow: 0 4px 12px rgba(0,0,0,0.5);
       }
+
       body.light-mode {
         --bg-color: #ffffff;
-        --text-color: #1a1a1a;
-        --accent-color: #0070f3;
-        --muted-color: #555;
+        --card-bg: #f6f8fa;
+        --text-color: #24292f;
+        --accent-color: #0969da;
+        --secondary-accent: #1a7f37;
+        --muted-color: #57606a;
+        --border-color: #d0d7de;
+        --nav-blur: rgba(255, 255, 255, 0.85);
+        --shadow: 0 4px 12px rgba(0,0,0,0.1);
       }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      
       body {
         font-family: 'Inter', sans-serif;
         background-color: var(--bg-color);
@@ -43,275 +48,287 @@
         line-height: 1.6;
         transition: background-color 0.3s, color 0.3s;
       }
-      #loader {
+
+      a { text-decoration: none; color: inherit; transition: 0.2s; }
+      ul { list-style: none; }
+
+      /* --- Navigation --- */
+      nav {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: var(--bg-color);
+        top: 0; width: 100%;
+        background: var(--nav-blur);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        z-index: 1000;
+        padding: 1rem 2rem;
         display: flex;
+        justify-content: space-between;
         align-items: center;
+      }
+
+      .logo { font-weight: 800; font-size: 1.2rem; color: var(--accent-color); }
+      
+      .nav-links { display: flex; gap: 2rem; }
+      .nav-links a { font-weight: 600; font-size: 0.95rem; color: var(--muted-color); }
+      .nav-links a:hover, .nav-links a.active { color: var(--accent-color); }
+
+      .theme-toggle {
+        background: none; border: none; cursor: pointer; color: var(--text-color); font-size: 1.2rem;
+      }
+
+      /* --- Layout Utility --- */
+      .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+      section { padding: 6rem 0; border-bottom: 1px solid var(--border-color); }
+
+      /* --- Hero Section --- */
+      .hero {
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        z-index: 9999;
+        align-items: flex-start;
       }
-      #loader .spinner {
-        border: 5px solid var(--muted-color);
-        border-top: 5px solid var(--accent-color);
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        animation: spin 1s linear infinite;
-      }
-      @keyframes spin {
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-      header {
-        padding: 4rem 2rem;
-        max-width: 800px;
-        margin: auto;
-        text-align: center;
-      }
-      header h1 {
-        font-size: 3rem;
+
+      .hero h1 {
+        font-size: 3.5rem;
         font-weight: 800;
-        background: linear-gradient(90deg, var(--accent-color), #ff7edb);
+        margin-bottom: 1rem;
+        background: linear-gradient(90deg, var(--accent-color), #a371f7);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: flicker 3s infinite alternate;
       }
-      @keyframes flicker {
-        0% {
-          opacity: 0.9;
-        }
-        25% {
-          opacity: 0.6;
-        }
-        50% {
-          opacity: 1;
-        }
-        75% {
-          opacity: 0.8;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-      header p {
-        font-size: 1.25rem;
-        margin-top: 1rem;
-        color: var(--muted-color);
-        animation: fadeInUp 1s ease-in-out both;
-      }
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .toggle-btn,
-      .print-btn {
-        margin: 1rem 0.5rem;
-        background: none;
+
+      .hero h2 { font-size: 1.5rem; color: var(--muted-color); margin-bottom: 2rem; font-weight: 400; }
+      
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 600;
         border: 2px solid var(--accent-color);
         color: var(--accent-color);
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s, color 0.3s;
+        margin-right: 1rem;
       }
-      .toggle-btn:hover,
-      .print-btn:hover {
-        background: var(--accent-color);
-        color: var(--bg-color);
-      }
-      section {
-        max-width: 800px;
-        margin: 3rem auto;
-        padding: 0 2rem;
-        animation: fadeIn 1.5s ease-in;
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      h2 {
-        font-size: 1.75rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
+      
+      .btn-primary { background: var(--accent-color); color: var(--bg-color); }
+      .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+      /* --- Skills Tags --- */
+      .skills-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+      .skill-tag {
+        font-size: 0.85rem;
+        padding: 0.25rem 0.75rem;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
         color: var(--accent-color);
       }
-      footer {
-        text-align: center;
-        padding: 2rem;
-        font-size: 0.9rem;
-        color: var(--muted-color);
+
+      /* --- Projects Grid --- */
+      .section-title { font-size: 2rem; margin-bottom: 2rem; color: var(--text-color); }
+      
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
       }
-      a {
-        color: var(--accent-color);
-        text-decoration: none;
-        font-weight: 600;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      .contact-box {
-        background: rgba(88, 166, 255, 0.1);
-        border-left: 4px solid var(--accent-color);
-        padding: 1.5rem;
+
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
         border-radius: 8px;
-        margin-top: 2rem;
+        padding: 1.5rem;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        flex-direction: column;
       }
-      .social-icons {
-        margin-top: 1rem;
+      
+      .card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--accent-color); }
+      
+      .card h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
+      .card .role { font-size: 0.9rem; color: var(--muted-color); margin-bottom: 1rem; display: block; }
+      .card ul { margin-left: 1rem; list-style-type: disc; color: var(--muted-color); font-size: 0.9rem; flex-grow: 1; }
+      .card li { margin-bottom: 0.5rem; }
+      
+      .card-links { margin-top: 1.5rem; }
+      .card-links a { font-size: 0.9rem; margin-right: 1rem; color: var(--accent-color); font-weight: 600; }
+
+      /* --- Resume/Experience Section --- */
+      .resume-item {
+        margin-bottom: 2.5rem;
+        padding-left: 1.5rem;
+        border-left: 2px solid var(--border-color);
       }
-      .social-icons a {
-        margin: 0 0.75rem;
-        font-size: 1.5rem;
-        color: var(--accent-color);
-        transition: transform 0.3s ease-in-out;
-      }
-      .social-icons a:hover {
-        transform: scale(1.3) rotate(5deg);
-      }
-      .github-end {
-        margin-top: 3rem;
-        text-align: center;
-        font-size: 1.1rem;
-        animation: fadeInUp 1.5s ease-in-out;
-      }
-      @media (max-width: 600px) {
-        header h1 {
-          font-size: 2.25rem;
-        }
-        header p {
-          font-size: 1rem;
-        }
-        section {
-          padding: 0 1rem;
-        }
-        .social-icons a {
-          font-size: 1.25rem;
-        }
-      }
-      @media print {
-        body {
-          background: white;
-          color: black;
-        }
-        header,
-        .toggle-btn,
-        .print-btn,
-        footer,
-        .social-icons {
-          display: none;
-        }
+      .resume-item h3 { font-size: 1.2rem; }
+      .resume-item .meta { font-size: 0.9rem; color: var(--accent-color); margin-bottom: 0.75rem; font-family: monospace; }
+      .resume-item p { color: var(--muted-color); font-size: 0.95rem; margin-bottom: 0.5rem; }
+
+      /* --- Footer --- */
+      footer { padding: 4rem 0; text-align: center; color: var(--muted-color); font-size: 0.9rem; }
+      .socials { margin-bottom: 1rem; }
+      .socials a { font-size: 1.5rem; margin: 0 1rem; color: var(--text-color); }
+      .socials a:hover { color: var(--accent-color); }
+
+      /* --- Mobile --- */
+      @media (max-width: 768px) {
+        .hero h1 { font-size: 2.5rem; }
+        .nav-links { display: none; } 
       }
     </style>
   </head>
+  
   <body>
-    <div id="loader">
-      <div class="spinner"></div>
-    </div>
 
-    <header>
-      <h1>Alexander Montesinos</h1>
-      <p>
-        Student At The University Of Detroit Michigan • Innovation Intern At
-        Orange Sparkle Ball, Inc
-      </p>
-      <div>
-        <button class="toggle-btn" onclick="toggleTheme()">
-          Toggle Dark/Light Mode
-        </button>
+    <nav>
+      <div class="logo">AM.</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/alex-montesinos" target="_blank">GitHub <i class="fas fa-external-link-alt" style="font-size: 0.75em"></i></a>
       </div>
-      <div>
-        <a class="print-btn" href="Alexander_Montesinos_Resume.pdf" download>
-          Download Resume (PDF)
-        </a>
-      </div>
-    </header>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+        <i class="fas fa-adjust"></i>
+      </button>
+    </nav>
 
-    <section id="about" data-aos="fade-up">
-      <h2>About Me</h2>
-      <p>
-        I’m Alexander Montesinos, a first-gen college student from Detroit,
-        currently studying Computer Engineering at the University of
-        Michigan–Dearborn. I’ve always been drawn to solving complex problems
-        and building things that have real-world impact, which is what led me
-        into robotics, programming, and eventually engineering.
-        <br /><br />
-        Right now, I’m a full time student while working part time as an intern at 
-        Orange Sparkle Ball, where I help oversee robotic deliveries in downtown Detroit,
-        and I am also working as a controls mentor at the Michigan Engineering Zone. 
-        <br /><br />
-        In high school, I was co-captain of my FIRST Robotics team, where we
-        built a swerve-drive robot with autonomous routines that used AprilTags
-        to localize itself on the field. I’ve also taught coding to younger
-        students at iCode, worked with nonprofits to expand robotics access in
-        Detroit, attended MIT Introduction to Technology, Engineering and
-        Science Summer of 2024 where I created a partial functioning and 
-        award winning Iron Man Helmet project, graduated Wolverine Pathways 
-        Cohort '25, and helped run summer STEM camps.
-        <br /><br />
-        Outside of tech, I wrestled varsity, I’m bilingual in English and
-        Spanish, and am willing to learn something new.
-      </p>
+    <section id="home" class="container hero">
+      <div data-aos="fade-up">
+        <h2>Hello, I'm</h2>
+        <h1>Alexander Montesinos</h1>
+        <p style="font-size: 1.2rem; color: var(--muted-color); max-width: 600px; margin-bottom: 2rem;">
+          Computer Engineering Student at <span style="color: var(--accent-color)">University of Michigan-Dearborn</span>. 
+          Bridging the gap between hardware and software to solve real-world problems.
+        </p>
+        
+        <div class="skills-container" style="margin-bottom: 2rem;">
+          <span class="skill-tag">Java & C++</span>
+          <span class="skill-tag">Embedded C</span>
+          <span class="skill-tag">PSoC Controllers</span>
+          <span class="skill-tag">Robotics (WPILib)</span>
+          <span class="skill-tag">Control Systems</span>
+          <span class="skill-tag">Fusion 360</span>
+        </div>
+
+        <div>
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="Alexander_Montesinos_Resume_2026.pdf" class="btn" download>Download Resume</a>
+        </div>
+      </div>
     </section>
 
-    <section id="contact" class="contact-box" data-aos="fade-up">
-      <h2>Get in Touch</h2>
-      <p>
-        <strong>Email:</strong>
-        <a href="mailto:montesin@umich.edu">montesin@umich.edu</a>
-      </p>
-      <p>
-        <strong>Resume:</strong>
-        <a href="Alexander_Montesinos_Resume.pdf" download>
-          Download My Resume (PDF)</a
-        >
-      </p>
-      <p>
-        <strong>LinkedIn:</strong>
-        <a href="https://www.linkedin.com/in/a-montesinos" target="_blank"
-          >linkedin.com/in/a-montesinos</a
-        >
-      </p>
+    <section id="projects" class="container">
+      <h2 class="section-title" data-aos="fade-right">Featured Projects</h2>
+      <div class="grid">
+        
+        <article class="card" data-aos="fade-up">
+          <h3>Smart Iron Man Helmet</h3>
+          <span class="role">MITES (MIT) | Best Project Award</span>
+          <p class="description">
+            Designed a semi-functional 3D-printed helmet during the rigorous MIT Introduction to Technology, Engineering, and Science program.
+          </p>
+          <ul style="margin-top: 1rem;">
+            <li>Programmed PSoC controllers in C to manage servos for faceplate automation.</li>
+            <li>Integrated Bluetooth extenders and micro-speakers for audio communication.</li>
+            <li>Completed college-level embedded systems coursework in a 6-week intensive.</li>
+          </ul>
+        </article>
+
+        <article class="card" data-aos="fade-up" data-aos-delay="100">
+          <h3>Autonomous Delivery Ops</h3>
+          <span class="role">Orange Sparkle Ball | Innovation Intern</span>
+          <p class="description">
+            Managed real-world autonomous robot pilots in Detroit, ensuring high uptime and partner satisfaction.
+          </p>
+          <ul style="margin-top: 1rem;">
+            <li>Oversaw 150+ successful dispatches with a 98% partner satisfaction rate.</li>
+            <li>Acted as technical liaison to troubleshoot hardware and map locations.</li>
+            <li>Utilized field data to reduce system failures by 70%.</li>
+          </ul>
+        </article>
+
+        <article class="card" data-aos="fade-up" data-aos-delay="200">
+          <h3>Swerve Drive System</h3>
+          <span class="role">FRC Team 5577 | Software Lead</span>
+          <p class="description">
+            Spearheaded the technical transition to a swerve drive system for a competitive robot.
+          </p>
+          <ul style="margin-top: 1rem;">
+            <li>Implemented closed-loop control and autonomous path planning.</li>
+            <li>Developed routines using AprilTag localization for real-time field tracking.</li>
+            <li>Founded "Motor City Alliance" to support 90+ robotics teams in Detroit.</li>
+          </ul>
+        </article>
+
+      </div>
     </section>
 
-    <div class="github-end">
-      <p>
-        Explore more of my code & contributions on
-        <a href="https://github.com/alex-montesinos" target="_blank">GitHub</a>.
+    <section id="experience" class="container">
+      <h2 class="section-title" data-aos="fade-right">Professional Experience</h2>
+      
+      <div class="resume-item" data-aos="fade-left">
+        <h3>Detroit Operations Associate</h3>
+        <div class="meta">Orange Sparkle Ball, Inc. | July 2025 - Present</div>
+        <p>Managing autonomous robot pilots in Detroit. I troubleshoot robot systems, maintain dashboard accuracy, and document bugs to improve reliability for Ottonomy.io and Fabit Robotics.</p>
+      </div>
+
+      <div class="resume-item" data-aos="fade-left">
+        <h3>Software & Electrical Mentor</h3>
+        <div class="meta">Michigan Engineering Zone | June 2025 - Present</div>
+        <p>Mentoring students from 25+ FIRST Robotics teams. Teaching Java (WPILib), command-based programming, and CANbus architectures. Introduced AdvantageScope for live telemetry visualization.</p>
+      </div>
+
+      <div class="resume-item" data-aos="fade-left">
+        <h3>Intern - Manufacturing Electrical (AMEC)</h3>
+        <div class="meta">General Motors | Oct 2023 - May 2025</div>
+        <p>Supported the Automotive Manufacturing & Electrical College. Constructed physical training stands for wire harnesses and terminals. Onboarded 80+ Manufacturing and SDV engineers.</p>
+      </div>
+
+      <div class="resume-item" data-aos="fade-left">
+        <h3>Co-op Student - Global Business Solutions</h3>
+        <div class="meta">General Motors | Oct 2022 - May 2023</div>
+        <p>Worked with the inventory optimization group across North America. Focused on freeing up cash flow for the Electric Vehicle (EV) line while adhering to strict production timeframes.</p>
+      </div>
+
+      <div class="resume-item" data-aos="fade-left">
+        <h3>Senior Instructor</h3>
+        <div class="meta">iCode School | June 2022 - May 2024</div>
+        <p>Specialized in teaching micro-computers, game development, and VEX robotics. Also taught Intro to Aerospace Engineering and 3D printing summer camps.</p>
+      </div>
+
+    </section>
+
+    <section id="contact" class="container" style="text-align: center; border-bottom: none;">
+      <h2 class="section-title">Let's Connect</h2>
+      <p style="max-width: 600px; margin: 0 auto 2rem; color: var(--muted-color);">
+        Open to opportunities in embedded systems, robotics, and automation.
       </p>
-    </div>
+      <a href="mailto:montesin@umich.edu" class="btn btn-primary"><i class="fas fa-envelope"></i> Email Me</a>
+      <a href="https://www.linkedin.com/in/a-montesinos" target="_blank" class="btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </section>
 
     <footer>
-      <p>&copy; 2025 Alexander Montesinos</p>
+      <div class="socials">
+        <a href="https://github.com/alex-montesinos" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/a-montesinos" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:montesin@umich.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p>&copy; 2026 Alexander Montesinos.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-      AOS.init({ duration: 1000, once: true });
+      AOS.init({ duration: 800, once: true });
+
+      const body = document.body;
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') body.classList.add('light-mode');
 
       function toggleTheme() {
-        document.body.classList.toggle('light-mode');
+        body.classList.toggle('light-mode');
+        localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
       }
-
-      window.addEventListener('load', () => {
-        document.getElementById('loader').style.display = 'none';
-      });
     </script>
   </body>
 </html>
