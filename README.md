@@ -1,44 +1,31 @@
-# Alexander Montesinos - Personal Portfolio Website
+# Alexander Montesinos - Personal Portfolio
 
-Welcome to my personal portfolio site! 🎓🚀
+This repository contains the source code for my personal portfolio website. The site serves as a digital resume and project showcase, highlighting my work in robotics, embedded systems, and software engineering.
 
-This website was created as a hands-on project to help me dive into HTML and front-end web development while building a space to showcase who I am, my journey, and what I’ve been working on.
+**Live Site:** https://alex-montesinos.github.io/portfolio/
 
-You can view the site here:  
-🔗 [alex-montesinos.github.io/portfolio](https://alex-montesinos.github.io/portfolio/)
+## Overview
 
-## 🛠 Features
+This is a static website built to be lightweight and responsive. It features a Single Page Application (SPA) style layout with sticky navigation and a persistent theme toggle.
 
-- Responsive design for mobile and desktop
-- Animated elements using AOS (Animate On Scroll)
-- Light/Dark mode toggle
-- Custom loading animation
-- Resume download button (PDF)
-- Contact and social media links
-- Styled with custom CSS variables and Google Fonts
+## Features
 
-## 🧪 Tech Stack
+- Responsive design for mobile and desktop using CSS Grid and Flexbox
+- Dark/Light mode toggle with Local Storage persistence
+- "Animate On Scroll" (AOS) integration for visual transitions
+- Project showcase with technical details
+- Downloadable PDF resume integration
+
+## Tech Stack
 
 - HTML5
-- CSS3
-- JavaScript (basic DOM scripting)
-- AOS (Animate on Scroll library)
-- Font Awesome for icons
+- CSS3 (Custom Variables)
+- JavaScript (Vanilla)
+- AOS.js (Animation Library)
+- Font Awesome (Icons)
 
-## 📌 To-Do / Upcoming Features
+## Contact
 
-- Add project showcase section with images and GitHub links
-- Integrate blog or updates section
-- Add contact form (JavaScript or back-end support)
-- Deploy with GitHub Pages or custom domain
-- Improve accessibility and performance
-
-## 📬 Contact
-
-If you have feedback or suggestions, feel free to reach out via GitHub issues or connect through my LinkedIn.
-
----
-
-Thanks, 
 Alexander Montesinos
-Student At the University of Michigan-Dearborn
+University of Michigan - Dearborn
+Email: montesin@umich.edu
